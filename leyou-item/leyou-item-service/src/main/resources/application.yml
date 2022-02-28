@@ -1,0 +1,19 @@
+server:
+  port: 8081    #微服务端口号
+spring:
+  application:
+    name: item-service  #微服务名
+  datasource:           #数据库的信息
+    url:  jdbc:mysql://localhost:3306/leyou
+    username: root
+    password: root
+    hikari:
+      max-lifetime: 28830000      #连接的生命周期，超时即被释放
+      maximum-pool-size: 9        #最大线程池数
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka    #注册eureka的地址
+  instance:
+    lease-renewal-interval-in-seconds: 5      #心跳时间（秒）
+    lease-expiration-duration-in-seconds: 10  #过期时间（秒）
