@@ -3,6 +3,8 @@ package com.leyou.item.service;
 import com.leyou.common.pojo.PageResult;
 import com.leyou.item.pojo.Brand;
 
+import java.util.List;
+
 /**
  * 品牌的业务层接口
  */
@@ -18,4 +20,12 @@ public interface BrandService {
      * @return PageResult<Brand>
      */
     PageResult<Brand> queryBrandsByPage(String key, Integer page, Integer row, String sortBy, Boolean desc);
+
+    /**
+     * 新增品牌
+     * @param brand 品牌的对象
+     * @param cids  商品分类的id集合
+     * @return
+     */
+    void saveBrand(Brand brand, List<Long> cids);
 }

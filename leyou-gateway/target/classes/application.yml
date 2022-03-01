@@ -11,4 +11,6 @@ eureka:
 zuul:
   prefix: /api # 路由路径前缀
   routes:
-    item-service: /item/**    #商品微服务的映射路径
+    item-service: /item/**              #商品微服务的映射路径
+  ignored-services:
+    - upload-service      #忽略某个微服务

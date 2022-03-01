@@ -8,9 +8,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.security.interfaces.RSAKey;
 import java.util.List;
 
 /**
@@ -43,4 +45,20 @@ public class CategoryController {
         //响应给浏览器
         return ResponseEntity.ok(categories);
     }
+
+    /**
+     * 通过品牌id查询商品分类
+     * @param bid
+     * @return
+     */
+    @GetMapping("bid/{bid}")
+    public ResponseEntity<List<Category>> queryByBrandId(@PathVariable("bid")long bid){
+        List<Category> list = this.categoryServiceImpl.queryByBrandId(bid);
+        //判断集合手是否为空
+        if(list == null || list.size() < 1){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(list);
+    }
+
 }

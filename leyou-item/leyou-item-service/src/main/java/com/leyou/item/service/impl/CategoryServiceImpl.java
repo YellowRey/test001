@@ -28,4 +28,15 @@ public class CategoryServiceImpl implements CategoryService {
         return this.categoryMapper.select(record);
 
     }
+    /**
+     * 通过品牌id查询商品分类
+     * @param bid
+     * @return
+     */
+    @Override
+    public List<Category> queryByBrandId(long bid) {
+        return this.categoryMapper.queryByBrandId(bid);
+    }
+
+
 }
